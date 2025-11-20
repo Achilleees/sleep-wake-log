@@ -1,0 +1,14 @@
+{
+  "name": "sleep-wake-log",
+  "version": "1.0.0",
+  "description": "Windows desktop app for tracking irregular sleep patterns",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^31.3.1"
+  }
+}

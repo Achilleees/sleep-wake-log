@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sleep Wake Log</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Sleep + Tiredness Tracker</h1>
+      <p>Track DSPS and irregular sleep with durable local storage.</p>
+    </div>
+    <button id="sleepToggleBtn" class="primary">Loading...</button>
+  </header>
+
+  <section class="card">
+    <h2>Quick Capture</h2>
+    <p>Toggle when you go to sleep and wake up. Only one active sleep session is allowed.</p>
+    <div class="quick-actions">
+      <button id="startSleepBtn" class="primary">Start Sleep</button>
+      <button id="endSleepBtn" class="secondary">End Sleep</button>
+      <div id="activeSessionInfo"></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-header">
+      <h2>Session List &amp; Manual Editor</h2>
+      <div class="range-selector">
+        <label for="rangeSelect">Range:</label>
+        <select id="rangeSelect">
+          <option value="7">Last 7 days</option>
+          <option value="30" selected>Last 30 days</option>
+          <option value="90">Last 90 days</option>
+          <option value="all">All time</option>
+          <option value="custom">Custom</option>
+        </select>
+        <input type="date" id="customStart" />
+        <input type="date" id="customEnd" />
+      </div>
+    </div>
+
+    <div class="forms-grid">
+      <form id="sessionForm">
+        <h3 id="sessionFormTitle">Add Sleep Session</h3>
+        <label>Start<br />
+          <input type="datetime-local" id="sessionStart" required />
+        </label>
+        <label>End<br />
+          <input type="datetime-local" id="sessionEnd" required />
+        </label>
+        <div class="form-actions">
+          <button type="submit" class="primary" id="sessionSubmit">Save Session</button>
+          <button type="button" id="sessionCancel" class="ghost">Cancel</button>
+        </div>
+      </form>
+
+      <form id="tiredForm">
+        <h3 id="tiredFormTitle">Add Tired Period</h3>
+        <label>Start<br />
+          <input type="datetime-local" id="tiredStart" required />
+        </label>
+        <label>End<br />
+          <input type="datetime-local" id="tiredEnd" required />
+        </label>
+        <label>Note (optional)<br />
+          <input type="text" id="tiredNote" placeholder="felt wiped out after lunch" maxlength="140" />
+        </label>
+        <div class="form-actions">
+          <button type="submit" class="primary" id="tiredSubmit">Save Tired Period</button>
+          <button type="button" id="tiredCancel" class="ghost">Cancel</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="data-lists">
+      <div>
+        <h3>Sleep Sessions</h3>
+        <table id="sessionsTable">
+          <thead>
+            <tr><th>Start</th><th>End</th><th>Duration</th><th>Actions</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div>
+        <h3>Tired Periods</h3>
+        <table id="tiredTable">
+          <thead>
+            <tr><th>Start</th><th>End</th><th>Note</th><th>Actions</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-header">
+      <h2>Barcode Timeline</h2>
+      <p>See sleep across days. Bars are anchored to real calendar days, midnight-to-midnight.</p>
+    </div>
+    <div id="timeline" class="timeline"></div>
+  </section>
+
+  <footer>
+    <small>Data is stored locally in your user data directory. Closing the app will not lose history.</small>
+  </footer>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
