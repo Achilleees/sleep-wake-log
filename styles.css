@@ -1,0 +1,195 @@
+:root {
+  --bg: #0f1116;
+  --card: #151924;
+  --text: #e6ebff;
+  --muted: #9ca3af;
+  --primary: #5b8def;
+  --primary-accent: #4b70c9;
+  --secondary: #1f2937;
+  --danger: #e76f51;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 16px;
+  background: radial-gradient(circle at 20% 20%, rgba(91, 141, 239, 0.12), transparent 30%),
+              radial-gradient(circle at 80% 10%, rgba(78, 201, 176, 0.12), transparent 30%),
+              var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: var(--card);
+  border-radius: 12px;
+  border: 1px solid #1f2433;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  margin-bottom: 16px;
+}
+
+h1 { margin: 0; }
+
+h2 { margin: 0 0 8px 0; }
+
+.card {
+  background: var(--card);
+  border: 1px solid #1f2433;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.range-selector {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.quick-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+button {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 15px;
+  cursor: pointer;
+  color: var(--text);
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+button:active { transform: translateY(1px); }
+
+button.primary { background: var(--primary); }
+button.primary:hover { background: var(--primary-accent); }
+
+button.secondary {
+  background: var(--secondary);
+  color: var(--text);
+  border: 1px solid #2f3644;
+}
+
+button.ghost {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid #2f3644;
+}
+
+button.danger { background: var(--danger); }
+
+.forms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+form {
+  background: #0d1018;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #1f2433;
+}
+
+label { display: block; margin-bottom: 10px; color: var(--muted); }
+input, select {
+  width: 100%;
+  background: #111624;
+  color: var(--text);
+  border: 1px solid #1f2433;
+  border-radius: 8px;
+  padding: 8px;
+  margin-top: 4px;
+}
+
+.form-actions { display: flex; gap: 8px; }
+
+.data-lists { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }
+
+table { width: 100%; border-collapse: collapse; }
+th, td { border-bottom: 1px solid #1f2433; padding: 8px; text-align: left; }
+th { color: var(--muted); font-weight: 600; }
+
+footer { text-align: center; color: var(--muted); padding: 12px; }
+
+#timeline {
+  overflow-x: auto;
+  padding: 8px;
+  background: #0d1018;
+  border-radius: 10px;
+  border: 1px solid #1f2433;
+}
+
+#customStart,
+#customEnd {
+  display: none;
+}
+
+.timeline-grid {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 6px;
+}
+
+.day-column {
+  background: #0f1420;
+  border: 1px solid #1f2433;
+  border-radius: 8px;
+  padding: 6px;
+  width: 120px;
+}
+
+.day-header { color: var(--muted); font-size: 12px; margin-bottom: 4px; }
+
+.day-bars {
+  position: relative;
+  height: 360px;
+  background: linear-gradient(#0f1420, #0f1420),
+              repeating-linear-gradient(to bottom, rgba(255,255,255,0.05) 0, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 30px);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-radius: 4px;
+  background: linear-gradient(135deg, #5b8def, #4ec9b0);
+  opacity: 0.85;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.active-tag {
+  color: #f5d0a0;
+  font-size: 14px;
+}
+
+.note-text { color: var(--muted); font-size: 13px; }
+
+@media (max-width: 700px) {
+  header { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .range-selector { width: 100%; }
+  .day-column { width: 90px; }
+}
