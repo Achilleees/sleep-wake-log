@@ -226,8 +226,8 @@ function splitSessionByDay(session, range, color) {
     if (endSlice > startSlice) {
       const inRange = (!range.start || endSlice > range.start) && (!range.end || startSlice < range.end);
       if (inRange) {
-        const startMinutes = startSlice.getHours() * 60 + startSlice.getMinutes();
-        const endMinutes = endSlice.getHours() * 60 + endSlice.getMinutes();
+        const startMinutes = Math.max(0, Math.round((startSlice - dayStart) / 60000));
+        const endMinutes = Math.min(24 * 60, Math.round((endSlice - dayStart) / 60000));
         segments.push({
           dayKey: dayStart.toISOString().slice(0, 10),
           startMinutes,
