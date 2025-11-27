@@ -56,10 +56,16 @@ h2 { margin: 0 0 8px 0; }
   margin-bottom: 10px;
 }
 
-.range-selector {
+.month-nav {
   display: flex;
-  gap: 8px;
   align-items: center;
+  gap: 8px;
+}
+
+.month-label {
+  min-width: 160px;
+  text-align: center;
+  font-weight: 600;
 }
 
 .quick-actions {
@@ -141,43 +147,58 @@ footer { text-align: center; color: var(--muted); padding: 12px; }
   border: 1px solid #1f2433;
 }
 
-#customStart,
-#customEnd {
-  display: none;
+.timeline-wrapper {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.time-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 360px;
+  min-width: 90px;
+  padding: 8px;
+  background: #0f1420;
+  border: 1px solid #1f2433;
+  border-radius: 8px;
+  color: var(--muted);
+  font-size: 12px;
 }
 
 .timeline-grid {
   display: grid;
   grid-auto-flow: column;
-  gap: 6px;
+  gap: 4px;
 }
 
 .day-column {
   background: #0f1420;
   border: 1px solid #1f2433;
   border-radius: 8px;
-  padding: 6px;
-  width: 120px;
+  padding: 4px;
+  width: 52px;
 }
 
-.day-header { color: var(--muted); font-size: 12px; margin-bottom: 4px; }
+.day-header { color: var(--muted); font-size: 12px; margin-bottom: 4px; text-align: center; }
 
 .day-bars {
   position: relative;
   height: 360px;
-  background: linear-gradient(#0f1420, #0f1420),
-              repeating-linear-gradient(to bottom, rgba(255,255,255,0.05) 0, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 30px);
+  background: linear-gradient(to bottom, transparent 0, transparent 49.5%, rgba(255,255,255,0.1) 50%, transparent 50.5%, transparent 100%),
+              repeating-linear-gradient(to bottom, rgba(255,255,255,0.04) 0, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 30px);
   border-radius: 6px;
   overflow: hidden;
 }
 
 .bar {
   position: absolute;
-  left: 0;
-  right: 0;
-  border-radius: 4px;
-  background: linear-gradient(135deg, #5b8def, #4ec9b0);
-  opacity: 0.85;
+  left: 25%;
+  right: 25%;
+  border-radius: 6px;
+  opacity: 0.92;
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
@@ -190,6 +211,5 @@ footer { text-align: center; color: var(--muted); padding: 12px; }
 
 @media (max-width: 700px) {
   header { flex-direction: column; align-items: flex-start; gap: 8px; }
-  .range-selector { width: 100%; }
-  .day-column { width: 90px; }
+  .day-column { width: 44px; }
 }

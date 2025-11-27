@@ -1,12 +1,11 @@
 # Sleep Wake Log
 
-A single-page Electron app for Windows that tracks irregular sleep and tiredness patterns (DSPS / circadian disorders). Data is stored locally in the user's data directory as JSON and reloads automatically on startup.
+A single-page Electron app for Windows that tracks irregular sleep patterns (DSPS / circadian disorders). Data is stored locally in the user's data directory as JSON and reloads automatically on startup.
 
 ## Features
-- Start/stop a single active sleep session; prevents multiple overlapping active sessions.
-- Manually add, edit, or delete sleep sessions and tired periods with validation for time ranges.
-- Session list filtered by date ranges (7/30/90 days, all time, or custom).
-- "Barcode" timeline that splits sessions across calendar days to visualize shifting schedules.
+- Start/stop a single active sleep session; prevents multiple overlapping active sessions and resumes active timers on restart.
+- Manually add, edit, or delete sleep sessions with validation for time ranges.
+- Month-based navigation with previous/next arrows and a compact daily barcode timeline (with noon marker) to highlight patterns.
 - Immediate persistence on every change (create/update/delete) so closing the app never loses history.
 
 ## Development
@@ -19,4 +18,10 @@ A single-page Electron app for Windows that tracks irregular sleep and tiredness
    npm start
    ```
 
-The app runs as a single window SPA; all data is saved to `<userData>/sleepData.json` managed by Electron.
+## Packaging
+To build a distributable Windows app (produces an `.exe` inside `dist/SleepWakeLog-win32-x64`):
+```bash
+npm run package:win
+```
+
+You can pin the generated `.exe` or create a desktop shortcut to launch without opening your editor.
