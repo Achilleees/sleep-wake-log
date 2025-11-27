@@ -4,11 +4,13 @@
   "description": "Windows desktop app for tracking irregular sleep patterns",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "package:win": "electron-packager . SleepWakeLog --platform=win32 --arch=x64 --out=dist --overwrite"
   },
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^31.3.1"
+    "electron": "^31.3.1",
+    "electron-packager": "^17.1.2"
   }
 }

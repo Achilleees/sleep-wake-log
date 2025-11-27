@@ -9,7 +9,7 @@
 <body>
   <header>
     <div>
-      <h1>Sleep + Tiredness Tracker</h1>
+      <h1>Sleep Tracker</h1>
       <p>Track DSPS and irregular sleep with durable local storage.</p>
     </div>
     <button id="sleepToggleBtn" class="primary">Loading...</button>
@@ -28,17 +28,10 @@
   <section class="card">
     <div class="card-header">
       <h2>Session List &amp; Manual Editor</h2>
-      <div class="range-selector">
-        <label for="rangeSelect">Range:</label>
-        <select id="rangeSelect">
-          <option value="7">Last 7 days</option>
-          <option value="30" selected>Last 30 days</option>
-          <option value="90">Last 90 days</option>
-          <option value="all">All time</option>
-          <option value="custom">Custom</option>
-        </select>
-        <input type="date" id="customStart" />
-        <input type="date" id="customEnd" />
+      <div class="month-nav">
+        <button class="ghost" id="prevMonthBtn" aria-label="Previous month">◀</button>
+        <div id="monthLabel" class="month-label"></div>
+        <button class="ghost" id="nextMonthBtn" aria-label="Next month">▶</button>
       </div>
     </div>
 
@@ -56,23 +49,6 @@
           <button type="button" id="sessionCancel" class="ghost">Cancel</button>
         </div>
       </form>
-
-      <form id="tiredForm">
-        <h3 id="tiredFormTitle">Add Tired Period</h3>
-        <label>Start<br />
-          <input type="datetime-local" id="tiredStart" required />
-        </label>
-        <label>End<br />
-          <input type="datetime-local" id="tiredEnd" required />
-        </label>
-        <label>Note (optional)<br />
-          <input type="text" id="tiredNote" placeholder="felt wiped out after lunch" maxlength="140" />
-        </label>
-        <div class="form-actions">
-          <button type="submit" class="primary" id="tiredSubmit">Save Tired Period</button>
-          <button type="button" id="tiredCancel" class="ghost">Cancel</button>
-        </div>
-      </form>
     </div>
 
     <div class="data-lists">
@@ -85,22 +61,13 @@
           <tbody></tbody>
         </table>
       </div>
-      <div>
-        <h3>Tired Periods</h3>
-        <table id="tiredTable">
-          <thead>
-            <tr><th>Start</th><th>End</th><th>Note</th><th>Actions</th></tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
     </div>
   </section>
 
   <section class="card">
     <div class="card-header">
-      <h2>Barcode Timeline</h2>
-      <p>See sleep across days. Bars are anchored to real calendar days, midnight-to-midnight.</p>
+      <h2>Monthly Timeline</h2>
+      <p>See sleep across the selected month. Bars are anchored midnight-to-midnight with noon markers.</p>
     </div>
     <div id="timeline" class="timeline"></div>
   </section>

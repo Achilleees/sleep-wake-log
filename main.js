@@ -27,7 +27,7 @@ function ensureDataFile() {
     fs.mkdirSync(dir, { recursive: true });
   }
   if (!fs.existsSync(dataPath)) {
-    const initial = { settings: {}, sleepSessions: [], tiredBlocks: [] };
+    const initial = { settings: {}, sleepSessions: [] };
     fs.writeFileSync(dataPath, JSON.stringify(initial, null, 2));
   }
 }
@@ -38,13 +38,12 @@ function loadData() {
     const raw = fs.readFileSync(dataPath, 'utf-8');
     const parsed = JSON.parse(raw);
     if (!parsed.sleepSessions) parsed.sleepSessions = [];
-    if (!parsed.tiredBlocks) parsed.tiredBlocks = [];
     if (!parsed.settings) parsed.settings = {};
-    cachedData = parsed;
+    cachedData = { settings: parsed.settings, sleepSessions: parsed.sleepSessions };
     return cachedData;
   } catch (err) {
     console.error('Failed to read data file, using fallback', err);
-    cachedData = { settings: {}, sleepSessions: [], tiredBlocks: [] };
+    cachedData = { settings: {}, sleepSessions: [] };
     return cachedData;
   }
 }
